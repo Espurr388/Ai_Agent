@@ -4,7 +4,7 @@ import requests
 BASE_URL = "http://127.0.0.1:8000"
 
 def run_test_scenario():
-    print("🚀 BẮT ĐẦU TEST LUỒNG LMS (RAG + SCORING)\n")
+    print(" BẮT ĐẦU TEST LUỒNG LMS (RAG + SCORING)\n")
 
     # --- BƯỚC 1: GENERATE ---
     print(f"[Step 1] Đang gọi API /quiz/generate...")
@@ -63,7 +63,7 @@ def run_test_scenario():
         resp_submit.raise_for_status()
         result = resp_submit.json()
         
-        print(f"  ✅ Kết quả trả về từ Server:")
+        print(f"   Kết quả trả về từ Server:")
         print(f"     - Quiz ID: {result['quiz_id']}")
         print(f"     - Score: {result['score']}/{result['total']}")
         print(f"     - Percentage: {result['percentage']}%")
@@ -84,4 +84,5 @@ def run_test_scenario():
         print(resp_submit.text)
 
 if __name__ == "__main__":
+
     run_test_scenario()
