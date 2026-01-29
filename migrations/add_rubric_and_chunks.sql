@@ -1,0 +1,13 @@
+-- Migration SQL example (run once)
+BEGIN;
+ALTER TABLE questions ADD COLUMN IF NOT EXISTS rubric JSONB;
+ALTER TABLE questions ADD COLUMN IF NOT EXISTS max_score INTEGER DEFAULT 1;
+CREATE TABLE IF NOT EXISTS chunks (
+  id SERIAL PRIMARY KEY,
+  quiz_id INTEGER NOT NULL REFERENCES quizzes(id) ON DELETE CASCADE,
+  chunk_id TEXT NOT NULL,
+  text TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  UNIQUE (quiz_id, chunk_id)
+);
+COMMIT;
